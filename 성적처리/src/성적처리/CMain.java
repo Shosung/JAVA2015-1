@@ -3,7 +3,9 @@ package 성적처리;
 import view.CGangjwaView;
 import view.CGwamokView;
 import view.CLoginView;
-import DAOs.DAO;
+import DAOs.IDAO;
+import DAOs.ObjectDAO;
+import DAOs.TextDAO;
 import control.CGangjwaControl;
 import control.CGwamokControl;
 import control.CLoginControl;
@@ -15,22 +17,25 @@ public class CMain {
 
 	public static void main(String[] args) {
 		// login
-		// 수정
+		// 로그인
 		CLoginView loginView = new CLoginView();
 		CMember member = loginView.login();
 		CLoginControl  loginControl = new CLoginControl();
 		member = loginControl.login(member);
-		DAO memberDAO = new DAO();
-		memberDAO.write(member, "member");
-		member = (CMember) memberDAO.read("member");
+		IDAO memberDAO = new ObjectDAO();
+//		memberDAO.write(member, "member");
+//		CMember member = new CMember();
+		member = (CMember) memberDAO.read(member.getClass(), "member");
 		
 		// 과목 개설
 		CGwamokView gwamokView = new CGwamokView();
 		CGwamok gwamok = gwamokView.getGwamok();
+		/*
 		CGwamokControl gwamokControl = new CGwamokControl();
+
 		gwamok = gwamokControl.processGwamok(gwamok);		
-		DAO gwamokDAO = new DAO();
-		gwamokDAO.write(gwamok, "gwamok");
+		IDAO gwamokDAO = new ObjectDAO();
+//		gwamokDAO.write(gwamok, "gwamok");
 		gwamok = (CGwamok) gwamokDAO.read("gwamok");
 		
 		// 강좌 개설
@@ -38,9 +43,10 @@ public class CMain {
 		CGangjwa gangjwa = gangjwaView.getGangjwa();
 		CGangjwaControl gangjwaControl = new CGangjwaControl();
 		gangjwa = gangjwaControl.processGangjwa(gangjwa);		
-		DAO gangjwaDAO = new DAO();
-		gangjwaDAO.write(gangjwa, "gangjwa");
+		IDAO gangjwaDAO = new ObjectDAO();
+//		gangjwaDAO.write(gangjwa, "gangjwa");
 		gangjwa = (CGangjwa) gangjwaDAO.read("gangjwa");		
+*/
 	}
 
 }
