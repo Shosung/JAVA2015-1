@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 // Entity class or Value class
-public class CMember implements Serializable {
+public class CMember extends CEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// attributes
