@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 import entity.CMember;
 
-public class CLoginView {
+public class CLoginView extends CView {
 	
-	public CMember login() {
+	public void login() {
 		Scanner scanner = new Scanner(System.in); 
 		// input from keyboard using scanner
 		CMember member = new CMember();
@@ -16,8 +16,8 @@ public class CLoginView {
 //		String password = scanner.next();		
 		member.setPassword("password");
 		// close scanner
+		
+		member = (CMember) this.getControl().process(member);
 		scanner.close();
-		return member;
 	}
-
 }
